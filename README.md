@@ -1,5 +1,5 @@
 vtt字幕文件转lrc字幕文件的powershell脚本            
-> vtt_to_lrc 用于文件转换  
+> vtt_to_lrc 用于同目录下文件转换  
 转换后的格式为 
 ```lrc 
 [时间戳1] 内容1   
