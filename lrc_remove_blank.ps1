@@ -2,7 +2,7 @@
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 Set-Location $scriptPath
 
-# 获取当前目录下所有 .vtt 文件
+# 获取当前目录下所有 .lrc 文件
 $lrcFiles = Get-ChildItem -Filter "*.lrc"
 
 if ($lrcFiles.Count -eq 0) {
