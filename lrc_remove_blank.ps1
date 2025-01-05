@@ -26,8 +26,8 @@ foreach ($lrcFile in $lrcFiles) {
     for ($i = 0; $i -lt $content.Count; $i++) {
         $line = $content[$i]
         # 如果是空行，进行处理
-         if ($line -match '^\[(\d+):(\d+)\.(\d+)\]$') {
-             # 当前空行的时间戳
+        if ($line -match '^\[(\d+):(\d+)\.(\d+)\]$') {
+            # 当前空行的时间戳
             $currentTimestamp = "$($matches[1]):$($matches[2]).$($matches[3])"
             $currentSeconds = Convert-ToSeconds $currentTimestamp
             # 判断下一行是否是非空行
@@ -37,15 +37,17 @@ foreach ($lrcFile in $lrcFiles) {
                 $nextSeconds = Convert-ToSeconds $nextTimestamp
                 # 如果时间间隔大于 1 秒，保留当前空行
                 if (($nextSeconds - $currentSeconds) -ge 1) {
-                $result += $line
+                    $result += $line
                 }
-            } else {
-            # 最后一行空行无条件保留
-            $result += $line
             }
-        } else {
-        # 非空行直接保留
-        $result += $line
+            else {
+                # 最后一行空行无条件保留
+                $result += $line
+            }
+        }
+        else {
+            # 非空行直接保留
+            $result += $line
         }
     }
     # 写入结果到输出文件
